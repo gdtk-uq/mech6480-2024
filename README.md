@@ -32,6 +32,6 @@ You now have a working directory that will allow you to practice version control
 
 ## Python editors
 
-A large portion of the code that we demo in contact sessions will be done using Syder.
+A large portion of the code that we demo in contact sessions will be done using Spyder.
 You are welcome to install this and test it out, but you are also welcome to use something like VSCode, PyCharm, Idle, etc. if you prefer.
 
