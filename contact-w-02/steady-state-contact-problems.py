@@ -81,7 +81,7 @@ if __name__ == "__main__":
         T_A = 100
         T_B = 500
 
-        def analyticSolution(x):
+        def analytic_solution(x):
             return (T_B - T_A)/length * x + T_A
     elif problem == 2:
         k = 0.5                # W/m.K
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         T_A = 100
         T_B = 200
 
-        def analyticSolution(x):
+        def analytic_solution(x):
             return ( (T_B - T_A)/length + q*(length - x)/(2*k) )*x + T_A
     elif problem == 3:
         gamma = 0.1
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
         phi_0 = 1
         phi_L = 0
-        def analyticSolution(x):
+        def analytic_solution(x):
             return phi_0 + (phi_L - phi_0) * (np.exp(rho*u*x/gamma)-1) / (np.exp(rho*u*length/gamma) -1)
     else:
         print('Invalid problem number')
@@ -123,7 +123,7 @@ if __name__ == "__main__":
 
         # PLOT
         x_analytic = np.linspace(0,length,100)
-        plt.plot(x_analytic, analyticSolution(x_analytic), 'r--')
+        plt.plot(x_analytic, analytic_solution(x_analytic), 'r--')
         plt.plot(x_locations, T, 'bo')
         plt.xlabel('x [m]')
         plt.ylabel('T [K]')
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
         # PLOT
         x_analytic = np.linspace(0,length,100)
-        plt.plot(x_analytic, analyticSolution(x_analytic), 'r--')
+        plt.plot(x_analytic, analytic_solution(x_analytic), 'r--')
         plt.plot(x_locations, phi, 'bo')
         plt.xlabel('x [m]')
         plt.ylabel('phi')
