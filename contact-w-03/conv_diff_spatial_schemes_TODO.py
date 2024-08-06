@@ -39,10 +39,10 @@ def conv_diff_dirichlet(n, dx, F, D, boundary_left, boundary_right,method="cente
     matrix_A[-1,-1] = a_W + S_p_right
 
     # Make source vector
-    vector_b = np.zeros((n,1))
+    vector_b = np.zeros(n)
     vector_b[0]  = S_p_left * boundary_left
     vector_b[-1] = S_p_right * boundary_right
-    return (matrix_A, vector_b)
+    return (matrix_A, vector_b.T)
 
 def generate_matrix_and_solve(num_cells, dx, F, D, phi_0, phi_L, method = "centered"):
     raise NotImplementedError("To do - implement matrix system and solve")
