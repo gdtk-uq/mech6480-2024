@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{expl3}                                     % - Load LaTeX3 packages
+
+% History:
+%    2023-07-24
+%    This LaTeX file is adapted from the one Alex Muirhead built for ENGG1001 resources.
+%    The main difference is that I have removed any dependency on minted. 
+%
+
+%% ================================================================================
+%%                            ~~~ CLASS META-INFO ~~~                             
+%% ________________________________________________________________________________
+
+\ProvidesExplPackage
+    {preamble}                                                      % - Name
+    {2023/07/24}                                                    % - Date
+    {1.0.0}                                                         % - Version
+    {Style sheet for the MECH6480 tutorials }                       % - Description
+    
+%% ================================================================================
+
+% Input Encoding Standard
+\RequirePackage [ utf8 ]{ inputenc }
+
+% Custom Fonts
+\RequirePackage [ light, semibold, default ]{ sourceserifpro }
+\RequirePackage [ light, semibold          ]{ sourcesanspro  }
+\RequirePackage [ light, semibold          ]{ sourcecodepro  }
+\RequirePackage { microtype }
+\DisableLigatures { encoding = T1, family = tt* }
+
+% Custom Icons
+\RequirePackage { fontawesome5 }
+
+% Construction Packages
+\RequirePackage { xspace, xparse, etoolbox }
+\RequirePackage [ x11names ]{ xcolor }
+
+\RequirePackage [ a4paper, margin=20mm ]{ geometry }
+\RequirePackage { float }
+\RequirePackage { caption }
+\RequirePackage { parskip }
+\RequirePackage [ sf, bf ]{ titlesec }  % Set Title font to Serif
+
+\captionsetup{
+    table position = above,
+    width          = 0.8\textwidth,
+    text font      = { sl, color=black!90 },
+}
+
+\RequirePackage { tikz }
+\ExplSyntaxOff  % Change catcode of spaces to 10, as TikZ relies on it
+\usetikzlibrary{matrix,shapes.geometric,arrows.meta}
+\ExplSyntaxOn
+
+\RequirePackage { amsmath, amsfonts, amssymb }
+%\RequirePackage [ detect-all ]{ siunitx }
+\RequirePackage { nth, xfrac }
+\RequirePackage { enumitem }
+
+\providecommand* \lseries { \fontseries{ l }\selectfont }
+
+\RequirePackage { makecell, booktabs }
+\renewcommand \theadfont { \bfseries }
+
+\RequirePackage { fancyvrb }
+% Custom packages for styling `console` and `script` environments
+%\RequirePackage { decorations }
+%\RequirePackage [ annotation={vivid~blue} ]{ annotations }
+
+\RequirePackage [
+    breaklinks  = true,
+    colorlinks  = true, 
+    allcolors   = black 
+]{ hyperref }
+
+\AfterPreamble {
+    \clist_const:Nn      \metainfo { title, author, date }
+    \clist_map_inline:Nn \metainfo { \tl_new:c     { the #1 } }
+    \clist_map_inline:Nn \metainfo { \tl_set_eq:cc { the #1 }{ \c_atsign_str #1 } }
+}
