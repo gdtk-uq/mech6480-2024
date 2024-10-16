@@ -28,15 +28,15 @@ for i in range(len(fs)):
                                                     - 3/2*(u_w**2 ))))
 
 #NEBB
-eq1 = sp.Eq(f3 + f3_eq - f1_eq, f1)
+eq1 = sp.Eq(f3 - f3_eq + f1_eq, f1)
 eq1 = eq1.subs(f3_eq, feq_equations[3].rhs)
 eq1 = eq1.subs(f1_eq, feq_equations[1].rhs).simplify()
 print(sp.ccode(eq1))
-eq2 = sp.Eq(f7 + f7_eq - f5_eq + Ny, f5)
+eq2 = sp.Eq(f7 - f7_eq + f5_eq + Ny, f5)
 eq2 = eq2.subs(f7_eq, feq_equations[7].rhs)
 eq2 = eq2.subs(f5_eq, feq_equations[5].rhs).simplify()
 print(sp.ccode(eq2))
-eq3 = sp.Eq(f6 + f6_eq - f8_eq - Ny, f8)
+eq3 = sp.Eq(f6 - f6_eq + f8_eq - Ny, f8)
 eq3 = eq3.subs(f6_eq, feq_equations[6].rhs)
 eq3 = eq3.subs(f8_eq, feq_equations[8].rhs).simplify()
 print(sp.ccode(eq3))
